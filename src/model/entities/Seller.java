@@ -7,12 +7,12 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Seller 
+ * Seller
  *
  * @author dailson
  *
  */
-public class Seller implements Serializable{
+public class Seller implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -21,13 +21,12 @@ public class Seller implements Serializable{
 	private String email;
 	private Date bithDay;
 	private Double baseSalary;
-	
-	private Department department;
-	
-	public Seller() {
-		
-	}
 
+	private Department department;
+
+	public Seller() {
+
+	}
 
 	/**
 	 * @param id
@@ -45,14 +44,12 @@ public class Seller implements Serializable{
 		this.department = department;
 	}
 
-
 	/**
 	 * @return the id
 	 */
 	public Integer getId() {
 		return id;
 	}
-
 
 	/**
 	 * @param id the id to set
@@ -61,14 +58,12 @@ public class Seller implements Serializable{
 		this.id = id;
 	}
 
-
 	/**
 	 * @return the name
 	 */
 	public String getName() {
 		return name;
 	}
-
 
 	/**
 	 * @param name the name to set
@@ -77,14 +72,12 @@ public class Seller implements Serializable{
 		this.name = name;
 	}
 
-
 	/**
 	 * @return the email
 	 */
 	public String getEmail() {
 		return email;
 	}
-
 
 	/**
 	 * @param email the email to set
@@ -93,14 +86,12 @@ public class Seller implements Serializable{
 		this.email = email;
 	}
 
-
 	/**
 	 * @return the bithDay
 	 */
 	public Date getBithDay() {
 		return bithDay;
 	}
-
 
 	/**
 	 * @param bithDay the bithDay to set
@@ -109,14 +100,12 @@ public class Seller implements Serializable{
 		this.bithDay = bithDay;
 	}
 
-
 	/**
 	 * @return the baseSalary
 	 */
 	public Double getBaseSalary() {
 		return baseSalary;
 	}
-
 
 	/**
 	 * @param baseSalary the baseSalary to set
@@ -125,14 +114,12 @@ public class Seller implements Serializable{
 		this.baseSalary = baseSalary;
 	}
 
-
 	/**
 	 * @return the department
 	 */
 	public Department getDepartment() {
 		return department;
 	}
-
 
 	/**
 	 * @param department the department to set
@@ -141,7 +128,6 @@ public class Seller implements Serializable{
 		this.department = department;
 	}
 
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -149,7 +135,6 @@ public class Seller implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -168,12 +153,16 @@ public class Seller implements Serializable{
 		return true;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Seller [id=" + id + ", name=" + name + ", email=" + email + ", bithDay=" + bithDay + ", baseSalary="
-				+ baseSalary + ", department=" + department + "]";
+		StringBuilder strgBuilder = new StringBuilder();
+		strgBuilder.append("Id: " + this.getId() + "\n");
+		strgBuilder.append("Name: " + this.getName() + "\n");
+		strgBuilder.append("Email: " + this.getEmail() + "\n");
+		strgBuilder.append("BirthDay: " + this.getBithDay() + "\n");
+		strgBuilder.append("Base Salary: " + this.getBaseSalary() + "\n");
+		strgBuilder.append("Department \n" + this.getDepartment() + "\n");
+		return strgBuilder.toString();
 	}
-	
-	
+
 }

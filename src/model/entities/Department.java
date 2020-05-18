@@ -6,22 +6,22 @@ package model.entities;
 import java.io.Serializable;
 
 /**
- * Department 
+ * Department
  *
  * @author dailson
  *
  */
-public class Department implements Serializable{
+public class Department implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
 	private String name;
-	
+
 	public Department() {
-		
+
 	}
-	
+
 	/**
 	 * @param id
 	 * @param name
@@ -30,14 +30,14 @@ public class Department implements Serializable{
 		this.id = id;
 		this.name = name;
 	}
-	
+
 	/**
 	 * @return
 	 */
 	public Integer getId() {
 		return this.id;
 	}
-	
+
 	/**
 	 * @param id
 	 */
@@ -86,7 +86,12 @@ public class Department implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Department [id=" + id + ", name=" + name + "]";
+		StringBuilder strbBuilder = new StringBuilder();
+
+		strbBuilder.append("Id: " + this.getId() + "\n");
+		strbBuilder.append("Name: " + this.getName() + "\n");
+
+		return strbBuilder.toString();
 	}
 
 }

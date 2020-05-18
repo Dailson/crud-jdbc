@@ -33,12 +33,12 @@ public interface DepartmentDao {
 	
 	/**
 	 * @param id
-	 * @return
+	 * @return a Department
 	 */
 	public Department findById(Integer id);
 	
 	/**
-	 * @return
+	 * @return a list of all Department
 	 */
 	public List<Department> findAll();
 }

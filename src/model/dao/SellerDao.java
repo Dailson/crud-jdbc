@@ -5,6 +5,7 @@ package model.dao;
 
 import java.util.List;
 
+import model.entities.Department;
 import model.entities.Seller;
 
 
@@ -32,12 +33,15 @@ public interface SellerDao {
 	
 	/**
 	 * @param id
-	 * @return
+	 * @return a Seller
 	 */
 	public Seller findById(Integer id);
 	
 	/**
-	 * @return
+	 * @return list of all Seller
 	 */
 	public List<Seller> findAll();
+	
+
+	public List<Seller> findByDepartment(Department department);
 }
