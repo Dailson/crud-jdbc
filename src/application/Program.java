@@ -21,7 +21,7 @@ public class Program {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static  void main(String[] args) {
 				
 		SellerDao sellerDao = DaoFactory.createSellerDao();
 
@@ -32,10 +32,16 @@ public class Program {
 		System.out.println("\n=== TEST 02: Seller findByDepartment ===");
 		Department department = new Department(2, null);
 		
-		List<Seller> list = sellerDao.findByDepartment(department);
+		List<Seller> list1 = sellerDao.findByDepartment(department);
 		
-		for(Seller obj : list) {
-			System.out.println(obj);
+		for(Seller obj1 : list1) {
+			System.out.println(obj1);
+		}
+		
+		System.out.println("\n=== TEST 03: Seller findAll ===");
+		list1 = sellerDao.findAll();
+		for(Seller obj2 : list1) {
+			System.out.println(obj2);
 		}
 	}
 
