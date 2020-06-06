@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import db.DB;
@@ -23,6 +24,8 @@ import model.entities.Department;
 public class DepartmentDaoJdbc implements DepartmentDao {
 
 	private Connection conn;
+	private PreparedStatement st;
+	private ResultSet rs;
 
 	public DepartmentDaoJdbc(Connection conn) {
 		this.conn = conn;
@@ -97,6 +100,32 @@ public class DepartmentDaoJdbc implements DepartmentDao {
 	@Override
 	public List<Department> findAll() {
 
-		return null;
+		try {
+
+			conn.setAutoCommit(false);
+			st = conn.prepareStatement("select * from department");
+
+			rs = st.executeQuery();
+
+			List<Department> list = new ArrayList<>();
+			while (rs.next()) {
+				Department dep = instanciateDepartment(rs);
+				list.add(dep);
+			}
+
+			conn.commit();
+			return list;
+		} catch (SQLException e) {
+			try {
+				conn.rollback();
+				throw new DbException("Transaction rollec back! Caused by " + e.getMessage());
+			} catch (SQLException e1) {
+				throw new DbException("Error trying rolled back! Caused by " + e1.getMessage());
+			}
+
+		} finally {
+			DB.closeStatement(st);
+			DB.closeResultSet(rs);
+		}
 	}
 }

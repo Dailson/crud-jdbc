@@ -31,7 +31,7 @@ public class ProgramSeller {
 		Seller seller = sellerDao.findById(2);
 		System.out.println(seller);
 
-		/*
+		
 		System.out.println("\n=== TEST 02: Seller findByDepartment ===");
 		Department department = new Department(2, null);
 		List<Seller> list1 = sellerDao.findByDepartment(department);
@@ -63,7 +63,7 @@ public class ProgramSeller {
 		System.out.println("\n=== TEST 06: Seller Delete ===");
 		sellerDao.deleteById(17);
 		System.out.println("Deleted!");
-*/
+
 	}
 
 }
