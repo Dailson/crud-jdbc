@@ -13,32 +13,32 @@ import model.entities.Department;
  * @author dailson
  *
  */
-public interface DepartmentDao {
+ public interface DepartmentDao {
 
 	
 	/**
 	 * @param obj
 	 */
-	public void insert(Department obj);
+	 void insert(Department obj);
 	
 	/**
 	 * @param obj
 	 */
-	public void update(Department obj);
+	 void update(Department obj);
 	
 	/**
 	 * @param id
 	 */
-	public void deleteById(Integer id);
+	 void deleteById(Integer id);
 	
 	/**
 	 * @param id
 	 * @return a Department
 	 */
-	public Department findById(Integer id);
+	 Department findById(Integer id);
 	
 	/**
 	 * @return a list of all Department
 	 */
-	public List<Department> findAll();
+	 List<Department> findAll();
 }

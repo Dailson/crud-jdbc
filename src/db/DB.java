@@ -23,7 +23,7 @@ public class DB {
 	private static Connection conn = null;
 
 	/**
-	 * @return
+	 * @return connection
 	 */
 	public static Connection getConnection() {
 		if (conn == null) {
@@ -55,7 +55,7 @@ public class DB {
 	}
 
 	/**
-	 * @param st
+	 * Clone Statement
 	 */
 	public static void closeStatement(Statement st) {
 		if (st != null) {
@@ -68,10 +68,10 @@ public class DB {
 	}
 
 	/**
-	 * @param rs
+	 * Close ResultSet
 	 */
 	public static void closeResultSet(ResultSet rs) {
-		if(rs != null) {
+		if (rs != null) {
 			try {
 				rs.close();
 			} catch (SQLException e) {
@@ -79,9 +79,9 @@ public class DB {
 			}
 		}
 	}
-	
+
 	/**
-	 * @return
+	 * Load the db.properties file
 	 */
 	private static Properties loadProperties() {
 		try (FileInputStream fs = new FileInputStream("db.properties")) {
