@@ -31,5 +31,11 @@ public class ProgramDepartment {
 		for(Department depOnList : list) {
 			System.out.println(depOnList);
 		}
+		
+		System.out.println("\n=== TEST 03: Department insert ===");
+		Department department = new Department(null, "Cap");
+		departmentDao.insert(department);
+		
+		
 	}
 }
