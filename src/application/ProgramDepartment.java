@@ -25,7 +25,7 @@ public class ProgramDepartment {
 		Department dep = departmentDao.findById(4);
 		System.out.println(dep);
 		
-		
+		/*
 		System.out.println("\n=== TEST 02: Department findAll ===");
 		List<Department>list = departmentDao.findAll();
 		for(Department depOnList : list) {
@@ -33,8 +33,14 @@ public class ProgramDepartment {
 		}
 		
 		System.out.println("\n=== TEST 03: Department insert ===");
-		Department department = new Department(null, "Cap");
-		departmentDao.insert(department);
+		dep = new Department(null, "fruits");
+		departmentDao.insert(dep);
+		
+		*/
+		System.out.println("\n=== TEST 04: Department update ===");
+		dep = departmentDao.findById(4);
+		dep.setName("Notebook");
+		departmentDao.update(dep);
 		
 		
 	}

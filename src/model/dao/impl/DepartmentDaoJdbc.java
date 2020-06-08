@@ -25,8 +25,6 @@ import model.entities.Department;
 public class DepartmentDaoJdbc implements DepartmentDao {
 
 	private Connection conn;
-	private PreparedStatement st;
-	private ResultSet rs;
 
 	public DepartmentDaoJdbc(Connection conn) {
 		this.conn = conn;
@@ -34,7 +32,9 @@ public class DepartmentDaoJdbc implements DepartmentDao {
 
 	@Override
 	public void insert(Department obj) {
-
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
 		try {
 			conn.setAutoCommit(false);
 			st = conn.prepareStatement("INSERT INTO department (Name) VALUES (?)", Statement.RETURN_GENERATED_KEYS);
@@ -70,8 +70,29 @@ public class DepartmentDaoJdbc implements DepartmentDao {
 
 	@Override
 	public void update(Department obj) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+		try {
 
+			conn.setAutoCommit(false);
+			st = conn.prepareStatement("UPDATE department SET name = ? WHERE Id = ?");
+
+			st.setString(1, obj.getName());
+			st.setInt(2, obj.getId());
+
+			st.executeUpdate();
+			System.out.println("Done! Id affect :" + obj.getId());
+			conn.commit();
+		} catch (SQLException e) {
+			try {
+				conn.rollback();
+				throw new DbException("Transaction rolled back! Caused by " + e.getMessage());
+			} catch (SQLException e1) {
+				throw new DbException("Error to rollback! Caused by " + e1.getMessage());
+			}
+
+		} finally {
+			DB.closeStatement(st);
+		}
 	}
 
 	@Override
@@ -82,7 +103,9 @@ public class DepartmentDaoJdbc implements DepartmentDao {
 
 	@Override
 	public Department findById(Integer id) {
-
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
 		try {
 
 			conn.setAutoCommit(false);
@@ -127,7 +150,9 @@ public class DepartmentDaoJdbc implements DepartmentDao {
 
 	@Override
 	public List<Department> findAll() {
-
+		PreparedStatement st = null;
+		ResultSet rs = null;
+		
 		try {
 
 			conn.setAutoCommit(false);
