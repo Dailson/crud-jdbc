@@ -25,7 +25,7 @@ public class ProgramDepartment {
 		Department dep = departmentDao.findById(4);
 		System.out.println(dep);
 		
-		/*
+		
 		System.out.println("\n=== TEST 02: Department findAll ===");
 		List<Department>list = departmentDao.findAll();
 		for(Department depOnList : list) {
@@ -36,12 +36,17 @@ public class ProgramDepartment {
 		dep = new Department(null, "fruits");
 		departmentDao.insert(dep);
 		
-		*/
+		
 		System.out.println("\n=== TEST 04: Department update ===");
 		dep = departmentDao.findById(4);
 		dep.setName("Notebook");
 		departmentDao.update(dep);
 		
+		
+		System.out.println("\n=== TEST 05: Department Delete ===");
+		departmentDao.deleteById(4);
+		dep.setName("Notebook");
+		System.out.println("Deleted");
 		
 	}
 }

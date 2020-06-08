@@ -97,7 +97,27 @@ public class DepartmentDaoJdbc implements DepartmentDao {
 
 	@Override
 	public void deleteById(Integer id) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+		try {
+			conn.setAutoCommit(false);
+			st = conn.prepareStatement("DELETE from department WHERE Id = ?");
+			
+			st.setInt(1, id);
+			
+			st.execute();
+			conn.commit();
+			
+		} catch (SQLException e) {
+			try {
+				conn.rollback();
+				throw new DbException("Transaction rolled back! Caused by " + e.getMessage());
+			} catch (SQLException e1) {
+				throw new DbException("Error trying to rollback! Caused by " + e1.getMessage());
+			}
+
+		} finally {
+			DB.closeStatement(st);
+		}
 
 	}
 
